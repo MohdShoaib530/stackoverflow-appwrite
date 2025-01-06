@@ -1,4 +1,4 @@
-import { IndexType, Permission } from 'node-appwrite';
+import { Permission } from 'node-appwrite';
 import { db, questionCollection } from '../name';
 import { databases } from './config';
 
@@ -47,7 +47,7 @@ export default async function createQuestionCollection() {
   ]);
 
   // create indexes
-  await Promise.all([
+  /*  await Promise.all([
     databases.createIndex(
       db,
       questionCollection,
@@ -64,5 +64,5 @@ export default async function createQuestionCollection() {
       ['content'],
       ['asc']
     )
-  ]);
+  ]); */
 }
