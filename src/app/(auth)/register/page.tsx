@@ -28,7 +28,7 @@ const LabelInputContainer = ({
 };
 
 export default function Register() {
-    const { login, createAccount } = useAuthStore();
+    const { login, createAccount, logout } = useAuthStore();
     const [isLoading, setIsLoading] = React.useState(false);
     const [error, setError] = React.useState("");
 
@@ -54,11 +54,15 @@ export default function Register() {
             email.toString(),
             password.toString()
         );
+        console.log('response',response);
 
         if (response.error) {
             setError(() => response.error!.message);
         } else {
+            const deleteSessions = await logout();
+            console.log('deleteSessions',deleteSessions);
             const loginResponse = await login(email.toString(), password.toString());
+            console.log('loginResponse',loginResponse);
             if (loginResponse.error) {
                 setError(() => loginResponse.error!.message);
             }
