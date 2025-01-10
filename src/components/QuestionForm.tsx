@@ -102,6 +102,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
             tags: Array.from(formData.tags),
             attachmentId: storageResponse.$id,
         });
+        console.log("response", response);
 
         loadConfetti();
 
@@ -141,6 +142,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
 
         // didn't check for attachment because it's optional in updating
         if (!formData.title || !formData.content || !formData.authorId) {
+            console.log("formData", formData);
             setError(() => "Please fill out all fields");
             return;
         }
