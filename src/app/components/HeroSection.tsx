@@ -12,6 +12,9 @@ export default async function HeroSection() {
         Query.orderDesc("$createdAt"),
         Query.limit(15),
     ]);
+    console.log('questions',questions);
+    const thumbnail = storage.getFilePreview(questionAttachmentBucket, questions.documents[1].attachmentId)
+    console.log('thumbnail', thumbnail);
 
     return (
         <HeroParallax
@@ -19,7 +22,7 @@ export default async function HeroSection() {
             products={questions.documents.map(q => ({
                 title: q.title,
                 link: `/questions/${q.$id}/${slugify(q.title)}`,
-                thumbnail: storage.getFilePreview(questionAttachmentBucket, q.attachmentId).href,
+                thumbnail: storage.getFilePreview(questionAttachmentBucket, q.attachmentId),
             }))}
         />
     );

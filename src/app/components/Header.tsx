@@ -31,6 +31,7 @@ export default function Header() {
     return (
         <div className="relative w-full">
             <FloatingNav navItems={navItems} />
+            
         </div>
     );
 }

@@ -139,9 +139,10 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
 
     const submit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        console.log('formdata.tags', formData.tags);
 
         // didn't check for attachment because it's optional in updating
-        if (!formData.title || !formData.content || !formData.authorId) {
+        if (!formData.title || !formData.content || !formData.authorId || !formData.tags) {
             console.log("formData", formData);
             setError(() => "Please fill out all fields");
             return;
@@ -162,7 +163,7 @@ const QuestionForm = ({ question }: { question?: Models.Document }) => {
     };
 
     return (
-        <form className="space-y-4" onSubmit={submit}>
+        <form className="space-y-4 px-10" onSubmit={submit}>
             {error && (
                 <LabelInputContainer>
                     <div className="text-center">

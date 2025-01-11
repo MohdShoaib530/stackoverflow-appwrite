@@ -55,7 +55,11 @@ export default function Login() {
         setIsLoading(() => false);
     };
 
-    return (
+    return isLoading ? (
+        <div className="flex items-center justify-center h-screen">
+            <div className="w-8 h-8 border-2 border-t-[2px] border-neutral-500 rounded-full animate-spin" />
+        </div>
+    ) : (
         <div className="mx-auto w-full max-w-md rounded-none border border-solid border-white/30 bg-white p-4 shadow-input dark:bg-black md:rounded-2xl md:p-8 mt-16">
             <h2 className="text-xl font-bold text-neutral-800 dark:text-neutral-200">
                 Login to Riverflow
