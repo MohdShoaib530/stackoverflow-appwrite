@@ -56,6 +56,7 @@ const VoteButtons = ({
                     typeId: id,
                 }),
             });
+            console.log('response',response);
 
             const data = await response.json();
 

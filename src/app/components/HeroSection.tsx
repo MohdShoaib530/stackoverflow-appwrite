@@ -13,13 +13,13 @@ export default async function HeroSection() {
         Query.limit(15),
     ]);
     console.log('questions',questions);
-    const thumbnail = storage.getFilePreview(questionAttachmentBucket, questions.documents[1].attachmentId)
+    const thumbnail = storage.getFilePreview(questionAttachmentBucket, questions.documents[0].attachmentId)
     console.log('thumbnail', thumbnail);
 
     return (
         <HeroParallax
             header={<HeroSectionHeader />}
-            products={questions.documents.map(q => ({
+            products={questions?.documents.map(q => ({
                 title: q.title,
                 link: `/questions/${q.$id}/${slugify(q.title)}`,
                 thumbnail: storage.getFilePreview(questionAttachmentBucket, q.attachmentId),
